@@ -1,0 +1,234 @@
+openapi: 3.0.0
+info:
+  title: E-commerce API
+  description: API for managing products, orders, and transactions
+  version: 1.0.0
+paths:
+  /products/{product_id}:
+    get:
+      summary: Retrieve product details by ID
+      parameters:
+      - in: path
+        name: product_id
+        schema:
+          type: string
+        required: true
+        description: Product ID
+      responses:
+        200:
+          description: Product details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Product'
+        404:
+          description: Product not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /products:
+    get:
+      summary: List all products
+      responses:
+        200:
+          description: List of products
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Product'
+  /users/{user_id}:
+    get:
+      summary: Retrieve user profile by ID
+      parameters:
+      - in: path
+        name: user_id
+        schema:
+          type: integer
+        required: true
+        description: User ID
+      responses:
+        200:
+          description: User profile
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        403:
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    put:
+      summary: Update user profile
+      parameters:
+      - in: path
+        name: user_id
+        schema:
+          type: integer
+        required: true
+        description: User ID
+      responses:
+        200:
+          description: User profile updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        400:
+          description: Invalid data
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /users:
+    get:
+      summary: List all users
+      responses:
+        200:
+          description: List of users
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/User'
+  /orders/{order_id}:
+    get:
+      summary: Retrieve order details by ID
+      parameters:
+      - in: path
+        name: order_id
+        schema:
+          type: string
+        required: true
+        description: Order ID
+      responses:
+        200:
+          description: Order details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+        404:
+          description: Order not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /orders:
+    get:
+      summary: List all orders
+      responses:
+        200:
+          description: List of orders
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Order'
+    post:
+      summary: Create new order
+      responses:
+        201:
+          description: Order created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+        400:
+          description: Invalid data
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /users/{user_id}/transactions:
+    get:
+      summary: Retrieve transaction history for a user
+      parameters:
+      - in: path
+        name: user_id
+        schema:
+          type: integer
+        required: true
+        description: User ID
+      responses:
+        200:
+          description: Transaction history
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Transaction'
+        403:
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+components:
+  schemas:
+    Product:
+      type: object
+      properties:
+        product_id:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        price:
+          type: number
+        currency:
+          type: string
+        stock:
+          type: number
+        category:
+          type: string
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        location:
+          type: string
+        bio:
+          type: string
+        followers:
+          type: integer
+        following:
+          type: integer
+    Order:
+      type: object
+      properties:
+        order_id:
+          type: string
+        status:
+          type: string
+        estimated_delivery:
+          type: string
+    Transaction:
+      type: object
+      properties:
+        transaction_id:
+          type: string
+        amount:
+          type: number
+        currency:
+          type: string
+        timestamp:
+          type: string
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+        message:
+          type: string
