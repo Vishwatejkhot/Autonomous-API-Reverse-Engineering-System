@@ -1,0 +1,21 @@
+# Example: Get product by ID
+
+curl -X GET "https://demo-api.com/products/P100" \
+  -H "Accept: application/json"
+
+Response:
+{
+  "product_id": "P100",
+  "name": "Wireless Mouse",
+  "description": "Bluetooth wireless mouse",
+  "price": 20.99,
+  "currency": "GBP",
+  "stock": 150,
+  "category": "electronics"
+}
+
+Error 404:
+{
+  "error": "PRODUCT_NOT_FOUND",
+  "message": "No product found with ID P100"
+}

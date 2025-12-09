@@ -1,0 +1,23 @@
+# Example: Get single user by id
+
+curl -X GET "https://demo-api.com/users/1" \
+  -H "Accept: application/json" \
+  -H "Authorization: Bearer <token>"
+
+Response:
+{
+  "id": 1,
+  "name": "Alice Johnson",
+  "email": "alice@example.com",
+  "phone_number": "+44-7000-000001",
+  "status": "active",
+  "created_at": "2024-01-10T12:00:00Z"
+}
+
+Error example (user not found):
+Status: 404
+Response:
+{
+  "error": "USER_NOT_FOUND",
+  "message": "No user with id=999 exists"
+}

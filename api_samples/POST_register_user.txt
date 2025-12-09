@@ -1,0 +1,21 @@
+# Example: Register new user
+
+curl -X POST "https://demo-api.com/auth/register" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "name": "David Miller",
+    "email": "david@example.com",
+    "password": "Pass123!"
+  }'
+
+Response:
+{
+  "id": 5,
+  "message": "User registered successfully"
+}
+
+Error 409:
+{
+  "error": "EMAIL_EXISTS",
+  "message": "This email is already registered"
+}

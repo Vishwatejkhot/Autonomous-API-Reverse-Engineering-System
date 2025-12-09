@@ -1,0 +1,16 @@
+# Example: Delete a user
+
+curl -X DELETE "https://demo-api.com/users/1" \
+  -H "Authorization: Bearer <token>"
+
+Response:
+{
+  "status": "deleted",
+  "id": 1
+}
+
+Error 404:
+{
+  "error": "USER_NOT_FOUND",
+  "message": "User does not exist"
+}

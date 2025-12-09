@@ -1,0 +1,26 @@
+# Example: Create a new order
+
+curl -X POST "https://demo-api.com/orders" \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer <token>" \
+  -d '{
+    "user_id": 1,
+    "items": [
+      {"product_id": "P100", "quantity": 2},
+      {"product_id": "P200", "quantity": 1}
+    ]
+  }'
+
+Response:
+{
+  "order_id": "ORD-2001",
+  "status": "processing",
+  "total_amount": 81.97,
+  "currency": "GBP"
+}
+
+Error 400:
+{
+  "error": "OUT_OF_STOCK",
+  "message": "Product P200 is not available"
+}

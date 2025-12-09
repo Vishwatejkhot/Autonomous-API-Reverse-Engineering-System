@@ -1,0 +1,17 @@
+# Example: Check order status
+
+curl -X GET "https://demo-api.com/orders/ORD-2001" \
+  -H "Accept: application/json"
+
+Response:
+{
+  "order_id": "ORD-2001",
+  "status": "shipped",
+  "estimated_delivery": "2024-02-15"
+}
+
+Error 404:
+{
+  "error": "ORDER_NOT_FOUND",
+  "message": "Invalid order ID"
+}

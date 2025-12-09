@@ -1,0 +1,26 @@
+# Example: List transactions for a user
+
+curl -X GET "https://demo-api.com/users/1/transactions?limit=5" \
+  -H "Authorization: Bearer <token>"
+
+Response:
+[
+  {
+    "transaction_id": "TXN-101",
+    "amount": -49.99,
+    "currency": "GBP",
+    "timestamp": "2024-01-20T09:00:00Z"
+  },
+  {
+    "transaction_id": "TXN-102",
+    "amount": 120.00,
+    "currency": "GBP",
+    "timestamp": "2024-01-21T10:30:00Z"
+  }
+]
+
+Error 403:
+{
+  "error": "UNAUTHORIZED",
+  "message": "Invalid or missing token"
+}

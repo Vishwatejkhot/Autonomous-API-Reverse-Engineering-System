@@ -1,0 +1,22 @@
+# Example: List products
+
+curl -X GET "https://demo-api.com/products" \
+  -H "Accept: application/json"
+
+Response:
+[
+  {
+    "product_id": "P100",
+    "name": "Wireless Mouse",
+    "price": 20.99,
+    "currency": "GBP",
+    "stock": 150
+  },
+  {
+    "product_id": "P200",
+    "name": "Keyboard",
+    "price": 39.99,
+    "currency": "GBP",
+    "stock": 90
+  }
+]

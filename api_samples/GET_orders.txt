@@ -1,0 +1,25 @@
+# Example: List orders for a user
+
+curl -X GET "https://demo-api.com/users/1/orders?status=completed" \
+  -H "Accept: application/json" \
+  -H "Authorization: Bearer <token>"
+
+Response:
+[
+  {
+    "order_id": "ORD-1001",
+    "user_id": 1,
+    "total_amount": 49.99,
+    "currency": "GBP",
+    "status": "completed",
+    "created_at": "2024-01-15T09:30:00Z"
+  },
+  {
+    "order_id": "ORD-1002",
+    "user_id": 1,
+    "total_amount": 19.50,
+    "currency": "GBP",
+    "status": "completed",
+    "created_at": "2024-01-22T14:15:00Z"
+  }
+]

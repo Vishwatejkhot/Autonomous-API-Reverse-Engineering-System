@@ -1,0 +1,23 @@
+# Example: Update user profile
+
+curl -X PUT "https://demo-api.com/users/1" \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer <token>" \
+  -d '{
+    "name": "Alice J.",
+    "location": "Bristol, UK"
+  }'
+
+Response:
+{
+  "id": 1,
+  "name": "Alice J.",
+  "location": "Bristol, UK",
+  "updated_at": "2024-02-01T10:00:00Z"
+}
+
+Error 400:
+{
+  "error": "INVALID_DATA",
+  "message": "Name cannot be empty"
+}

@@ -1,0 +1,28 @@
+# Example: Login endpoint
+
+curl -X POST "https://demo-api.com/auth/login" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "email": "alice@example.com",
+    "password": "mypassword123"
+  }'
+
+Response:
+Status: 200
+{
+  "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+  "token_type": "Bearer",
+  "expires_in": 3600,
+  "user": {
+    "id": 1,
+    "name": "Alice Johnson",
+    "email": "alice@example.com"
+  }
+}
+
+Error example (invalid credentials):
+Status: 401
+{
+  "error": "INVALID_CREDENTIALS",
+  "message": "Email or password is incorrect"
+}
